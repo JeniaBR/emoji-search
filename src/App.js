@@ -17,7 +17,7 @@ const EmojiResult = ({emojiList}) => (
 );
 
 const EmojiRow = ({emojiArray}) => (
-  <div className='row emoji-row'>
+  <div className='row'>
     {emojiArray.map((emoji)=>{
       return(
         <EmojiCard key={shortid.generate()} emoji={emoji}/>
@@ -62,6 +62,10 @@ class App extends Component {
     this.setState({
       filteredEmoji: this.filterEmoji(e.target.value,24)
     });
+  }
+
+  handleCopyEmoji = (e)=>{
+    const emojiSymbol = e.target.dataset.clipboard;
   }
 
   render() {

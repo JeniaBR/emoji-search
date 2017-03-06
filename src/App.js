@@ -5,22 +5,22 @@ import EmojiCard from './components/EmojiCard';
 import emojiList from './emojiList.json';
 import './App.css';
 
-const EmojiResult = ({emojiList}) => (
+const EmojiResult = ({onCopy, emojiList}) => (
   <div className="emoji-result">
     {emojiList.map((emoji) => {
       return (        
-        <EmojiRow key={shortid.generate()} emojiArray={emoji}/>
+        <EmojiRow key={shortid.generate()} onCopy={onCopy} emojiArray={emoji}/>
         );
       })
     }
   </div>
 );
 
-const EmojiRow = ({emojiArray}) => (
+const EmojiRow = ({onCopy, emojiArray}) => (
   <div className='row'>
     {emojiArray.map((emoji)=>{
       return(
-        <EmojiCard key={shortid.generate()} emoji={emoji}/>
+        <EmojiCard onCopy={onCopy} key={shortid.generate()} emoji={emoji}/>
       );
     })}
   </div>
@@ -66,6 +66,33 @@ class App extends Component {
 
   handleCopyEmoji = (e)=>{
     const emojiSymbol = e.target.dataset.clipboard;
+    var textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.value = emojiSymbol;
+
+    document.body.appendChild(textArea);
+    textArea.select();
+
+    try{
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copying text command was ' + msg);
+    }catch (err){
+      console.log('Oops, unable to copy');
+    }
+
+    document.body.removeChild(textArea);
+    //window.prompt("Copy to clipboard: Ctrl+C, Enter", emojiSymbol);
+    
   }
 
   render() {
@@ -74,7 +101,7 @@ class App extends Component {
       <div className="container-fluid App">
         <h2>Emoji Search App</h2>
         <InputField onTextChange={this.handleChangeSearch}/>
-        <EmojiResult emojiList={splittedFilteredEmoji}/>      
+        <EmojiResult onCopy={this.handleCopyEmoji} emojiList={splittedFilteredEmoji}/>      
       </div>
     );
   }

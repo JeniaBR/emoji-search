@@ -10,7 +10,7 @@ class EmojiCard extends Component {
         return(
             <div className='col-md-3'>
                 <div className='emoji-card'>                
-                    <div data-clipboard={symbol} className='emoji-img'><img alt={title} src={src} width='64' height='64'/></div>
+                    <div className='emoji-img'><img onClick={this.props.onCopy} data-clipboard={symbol} alt={title} src={src} width='64' height='64'/></div>
                     <div className='emoji-title'>{title}</div>
                 </div>
             </div>

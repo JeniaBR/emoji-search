@@ -7,7 +7,7 @@ const ModalBox = () => (
         <div className='modal-content'>
             <div className='modal-header'>
                 <span className='close'>&times;</span>
-                <h2>Modal Header</h2>
+                <div>Modal Header</div>
             </div>
             <div className='modal-body'>
                 <p>Some text here</p>

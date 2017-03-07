@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import shortid from 'shortid';
 import InputField from './components/InputField';
 import EmojiCard from './components/EmojiCard';
+import ModalBox from './components/ModalBox';
 import emojiList from './emojiList.json';
 import './App.css';
 
@@ -102,10 +103,13 @@ class App extends Component {
   render() {
     let splittedFilteredEmoji = this.splitToRows(this.state.filteredEmoji,4);
     return (
-      <div className="container-fluid App">
-        <Title/>
-        <InputField onTextChange={this.handleChangeSearch}/>
-        <EmojiResult onCopy={this.handleCopyEmoji} emojiList={splittedFilteredEmoji}/>      
+      <div className="container-fluid">
+        <ModalBox/>
+        <div className='App'>
+          <Title/>
+          <InputField onTextChange={this.handleChangeSearch}/>
+          <EmojiResult onCopy={this.handleCopyEmoji} emojiList={splittedFilteredEmoji}/>  
+        </div>     
       </div>
     );
   }

@@ -8,7 +8,7 @@ class EmojiCard extends Component {
         const codePointHex = symbol.codePointAt(0).toString(16);
         const src = `//cdn.jsdelivr.net/emojione/assets/png/${codePointHex}.png`;
         return(
-            <div className='col-md-3'>
+            <div className='col-md-3 col-xs-6'>
                 <div className='emoji-card'>                
                     <div className='emoji-img'><img onClick={this.props.onCopy} data-clipboard={symbol} alt={title} src={src} width='64' height='64'/></div>
                     <div className='emoji-title'>{title}</div>

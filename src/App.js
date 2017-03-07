@@ -26,6 +26,10 @@ const EmojiRow = ({onCopy, emojiArray}) => (
   </div>
 );
 
+const Title = ()=> (
+    <h2 className="title">Emoji Search App</h2>
+);
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -99,7 +103,7 @@ class App extends Component {
     let splittedFilteredEmoji = this.splitToRows(this.state.filteredEmoji,4);
     return (
       <div className="container-fluid App">
-        <h2>Emoji Search App</h2>
+        <Title/>
         <InputField onTextChange={this.handleChangeSearch}/>
         <EmojiResult onCopy={this.handleCopyEmoji} emojiList={splittedFilteredEmoji}/>      
       </div>

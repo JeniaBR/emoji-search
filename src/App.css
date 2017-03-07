@@ -3,8 +3,10 @@
   flex-direction: column;
 }
 
-h2 {
+.title {
   text-align: center;
+  font-size: 50px;
+  color: wheat;
 }
 
 .emoji-result{

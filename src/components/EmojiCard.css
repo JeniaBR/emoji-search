@@ -3,7 +3,9 @@
     flex-direction: column;
     align-items: center;
     margin: 5px;
-    
+    background: #F28EB4;
+    border-radius: 5px;
+    box-shadow: #F9D0E0
 }
 
 .emoji-img{

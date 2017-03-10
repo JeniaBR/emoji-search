@@ -39,6 +39,10 @@ class App extends Component {
     };
   }
 
+  componentDidMount(){
+    this.showModal();
+  }
+
   filterEmoji(text, numberOfResults) {
     return emojiList.filter((emoji) => {
       if (emoji.title.includes(text)) {
@@ -49,6 +53,17 @@ class App extends Component {
       }
       return false;
     }).slice(0, numberOfResults);
+  }
+
+  showModal(){
+    const modal = document.getElementById('start-modal');
+    modal.style.display='block';
+
+    window.onclick = (e) => {
+      if(e.target == modal){
+        modal.style.display = "none";
+      }
+    }
   }
 
   splitToRows(arr, len){
@@ -96,8 +111,6 @@ class App extends Component {
     }
 
     document.body.removeChild(textArea);
-    //window.prompt("Copy to clipboard: Ctrl+C, Enter", emojiSymbol);
-    
   }
 
   render() {

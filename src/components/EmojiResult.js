@@ -1,7 +1,8 @@
 import React from 'react';
 import shortid from 'shortid';
 import EmojiCard from './EmojiCard';
-import './EmojiCard.css'
+import './EmojiResult.css';
+import './EmojiCard.css';
 
 const EmojiResult = ({onCopy, emojiList}) => (
   <div className="emoji-result">

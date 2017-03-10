@@ -1,35 +1,12 @@
 import React, {Component} from 'react';
-import shortid from 'shortid';
+import Title from './components/Title';
 import InputField from './components/InputField';
-import EmojiCard from './components/EmojiCard';
 import ModalBox from './components/ModalBox';
+import EmojiResult from './components/EmojiResult';
 import emojiList from './emojiList.json';
 import './App.css';
 
-const EmojiResult = ({onCopy, emojiList}) => (
-  <div className="emoji-result">
-    {emojiList.map((emoji) => {
-      return (        
-        <EmojiRow key={shortid.generate()} onCopy={onCopy} emojiArray={emoji}/>
-        );
-      })
-    }
-  </div>
-);
 
-const EmojiRow = ({onCopy, emojiArray}) => (
-  <div className='row'>
-    {emojiArray.map((emoji)=>{
-      return(
-        <EmojiCard onCopy={onCopy} key={shortid.generate()} emoji={emoji}/>
-      );
-    })}
-  </div>
-);
-
-const Title = ()=> (
-    <h2 className="title">Emoji Search App</h2>
-);
 
 class App extends Component {
   constructor(props){
@@ -60,7 +37,7 @@ class App extends Component {
     modal.style.display='block';
 
     window.onclick = (e) => {
-      if(e.target == modal){
+      if(e.target === modal){
         modal.style.display = "none";
       }
     }

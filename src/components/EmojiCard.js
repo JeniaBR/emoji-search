@@ -16,6 +16,14 @@ class EmojiCard extends Component {
             </div>
         );
     }
-}
+};
+
+EmojiCard.propTypes = {
+    onCopy: React.PropTypes.func.isRequired,
+    emoji: React.PropTypes.shape({
+        title: React.PropTypes.string.isRequired,
+        symbol: React.PropTypes.string.isRequired
+    })
+};
 
 export default EmojiCard;

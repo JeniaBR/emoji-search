@@ -15,6 +15,11 @@ const EmojiResult = ({onCopy, emojiList}) => (
   </div>
 );
 
+EmojiResult.propTypes = {
+  onCopy: React.PropTypes.func.isRequired,
+  emojiList: React.PropTypes.array.isRequired
+};
+
 const EmojiRow = ({onCopy, emojiArray}) => (
   <div className='row'>
     {emojiArray.map((emoji)=>{
@@ -24,5 +29,11 @@ const EmojiRow = ({onCopy, emojiArray}) => (
     })}
   </div>
 );
+
+EmojiRow.propTypes = {
+  onCopy: React.PropTypes.func.isRequired,
+  emojiArray: React.PropTypes.array.isRequired
+};
+
 
 export default EmojiResult;
